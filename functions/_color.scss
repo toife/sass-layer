@@ -1,0 +1,75 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:map";
+@use "sass:list";
+@use "sass:meta";
+@use "../config";
+@use "../functions/naming";
+
+// Round color
+@function rgb-value($c) {
+  @return math.round(color.channel($c, "red", $space: rgb)),
+    math.round(color.channel($c, "green", $space: rgb)),
+    math.round(color.channel($c, "blue", $space: rgb));
+}
+
+// Mix color
+@function mix($base, $color, $percent) {
+  @return rgb-value(color.mix($base, $color, $percent));
+}
+
+// Tint color
+@function tint($color, $percent) {
+  @return mix(white, $color, $percent);
+}
+
+// Shade color
+@function shade($color, $percent) {
+  @return mix(black, $color, $percent);
+}
+
+// Scale color
+@function scale($color, $percent) {
+  @return rgb-value(color.scale($color, $lightness: $percent));
+}
+
+// Get text color based on background color
+// $bg: color (hex, rgb...) hoặc list 3 số RGB (r, g, b)
+@function auto-text-color($bg, $light, $dark) {
+  $c: rgb(list.nth($bg, 1), list.nth($bg, 2), list.nth($bg, 3));
+  $lightness: color.channel($c, "lightness", $space: hsl);
+
+  @if $lightness > 60% {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}
+
+// Generate palette
+@function palette($roles, $base: 550, $loop: 18, $step: 50) {
+  $palette: ();
+
+  @each $role-key, $role-color in $roles {
+    @for $i from 0 through $loop {
+      $level: 950 - $i * $step;
+      $p-name: naming.join($role-key, $level);
+      $p-color: "";
+
+      @if ($role-color == #ffffff) {
+        $percent: math.div($level, 950) * 100%;
+        $p-color: mix($role-color, rgb(0, 0, 0), $percent);
+      } @else if ($role-color == #000000) {
+        $percent: math.div($level, 950) * 100%;
+        $p-color: mix($role-color, rgb(255, 255, 255), $percent);
+      } @else {
+        $percent: math.div($base - $level, $base) * 50%;
+        $p-color: scale($role-color, $percent);
+      }
+
+      $palette: map.set($palette, $p-name, $p-color);
+    }
+  }
+
+  @return $palette;
+}

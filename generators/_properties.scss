@@ -1,0 +1,116 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:meta";
+@use "../mixins";
+@use "../functions/naming";
+@use "../config";
+
+// layer -> role -> variant -> property -> state
+@mixin layers($ls, $attributes: ()) {
+  // Render
+  @if (list.length($attributes) == 2) {
+    $selector: "";
+
+    // Layer
+    @if (list.nth($attributes, 1) != "") {
+      $value: list.nth($attributes, 1);
+      $cls: naming.prefix("layer", $value);
+      $selector: "#{$selector}.#{$cls}";
+    }
+
+    // Role
+    @if (list.nth($attributes, 2) != "") {
+      $value: list.nth($attributes, 2);
+      $cls: naming.prefix("role", $value);
+      $selector: "#{$selector}.#{$cls}";
+    }
+
+    #{$selector} {
+      @include mixins.tokens(
+        (
+          list.nth($attributes, 1): $ls,
+        )
+      );
+    }
+  } @else {
+    @each $key, $data in $ls {
+      $n: list.append($attributes, $key);
+      @include layers($data, $n);
+    }
+  }
+}
+
+// Shape
+@mixin shapes($shapes) {
+  @each $key, $value in $shapes {
+    $cls: naming.prefix("shape", $key);
+
+    .#{$cls} {
+      @include mixins.tokens($value);
+    }
+  }
+}
+
+// Size
+@mixin sizes($sizes) {
+  @each $key, $value in $sizes {
+    $cls: naming.prefix("size", $key);
+
+    .#{$cls} {
+      @include mixins.tokens($value);
+    }
+  }
+}
+
+// Build token
+@mixin tokens($theme) {
+  $spacing: map.get($theme, "spacing");
+  $stroke: map.get($theme, "stroke");
+  $motion: map.get($theme, "motion");
+  $viewport: map.get($theme, "viewport");
+  $overlay: map.get($theme, "overlay");
+  $sizes: map.get($theme, "sizes");
+
+  @include mixins.tokens(
+    (
+      "safe-area": (
+        "top": "env(safe-area-inset-top)",
+        "right": "env(safe-area-inset-right)",
+        "bottom": "env(safe-area-inset-bottom)",
+        "left": "env(safe-area-inset-left)",
+      ),
+      "spacing": $spacing,
+      "stroke": $stroke,
+      "motion": $motion,
+      "viewport": $viewport,
+      "overlay": $overlay,
+    )
+  );
+}
+
+// System
+@mixin system() {
+  :root {
+    --prefix: #{config.$prefix};
+    --separator: #{config.$separator};
+  }
+}
+
+// Build theme
+@mixin generate($mode, $theme) {
+  $layers: map.get($theme, "layers");
+  $shapes: map.get($theme, "shapes");
+  $sizes: map.get($theme, "sizes");
+  $palette: map.get($theme, "palette");
+  $modeCls: naming.prefix("mode", $mode);
+
+  .#{$modeCls} {
+    @include mixins.palette($palette);
+    @include tokens($theme);
+    @include shapes($shapes);
+    @include sizes($sizes);
+    @include layers($layers);
+  }
+
+  @include system();
+}
