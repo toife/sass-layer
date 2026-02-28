@@ -106,6 +106,7 @@
   @each $mode, $mode-config in $modes {
     $layers: map.get($mode-config, "layers");
     $base: map.get($mode-config, "base-color-weight");
+    $roles: map.get($mode-config, "roles");
     $palette: color.palette($roles, $base);
     $modeCls: naming.prefix("mode", $mode);
 
