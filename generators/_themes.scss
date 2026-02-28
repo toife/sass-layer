@@ -97,19 +97,21 @@
 }
 
 // Build theme
-@mixin generate($mode, $theme) {
-  $layers: map.get($theme, "layers");
-  $shapes: map.get($theme, "shapes");
-  $sizes: map.get($theme, "sizes");
-  $palette: map.get($theme, "palette");
-  $modeCls: naming.prefix("mode", $mode);
+@mixin generate($themes) {
+  @each $theme, $mode in $themes {
+    $layers: map.get($theme, "layers");
+    $shapes: map.get($theme, "shapes");
+    $sizes: map.get($theme, "sizes");
+    $palette: map.get($theme, "palette");
+    $modeCls: naming.prefix("mode", $mode);
 
-  .#{$modeCls} {
-    @include mixins.palette($palette);
-    @include tokens($theme);
-    @include shapes($shapes);
-    @include sizes($sizes);
-    @include layers($layers);
+    .#{$modeCls} {
+      @include mixins.palette($palette);
+      @include tokens($theme);
+      @include shapes($shapes);
+      @include sizes($sizes);
+      @include layers($layers);
+    }
   }
 
   @include system();
