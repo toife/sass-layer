@@ -98,7 +98,7 @@
 
 // Build theme
 @mixin generate($themes) {
-  @each $theme, $mode in $themes {
+  @each $mode, $theme in $themes {
     $layers: map.get($theme, "layers");
     $shapes: map.get($theme, "shapes");
     $sizes: map.get($theme, "sizes");
