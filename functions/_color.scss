@@ -47,24 +47,27 @@
 }
 
 // Generate palette
-@function palette($roles, $base: 550, $loop: 18, $step: 50) {
+@function palette($roles, $loop: 18, $step: 50) {
   $palette: ();
 
-  @each $role-key, $role-color in $roles {
+  @each $role-key, $role-value in $roles {
+    $color: list.nth($role-value, 1);
+    $base: list.nth($role-value, 2);
+
     @for $i from 0 through $loop {
       $level: 950 - $i * $step;
       $p-name: naming.join($role-key, $level);
       $p-color: "";
 
-      @if ($role-color == #ffffff) {
+      @if ($color == #ffffff) {
         $percent: math.div($level, 950) * 100%;
-        $p-color: mix($role-color, rgb(0, 0, 0), $percent);
-      } @else if ($role-color == #000000) {
+        $p-color: mix($color, rgb(0, 0, 0), $percent);
+      } @else if ($color == #000000) {
         $percent: math.div($level, 950) * 100%;
-        $p-color: mix($role-color, rgb(255, 255, 255), $percent);
+        $p-color: mix($color, rgb(255, 255, 255), $percent);
       } @else {
         $percent: math.div($base - $level, $base) * 50%;
-        $p-color: scale($role-color, $percent);
+        $p-color: scale($color, $percent);
       }
 
       $palette: map.set($palette, $p-name, $p-color);

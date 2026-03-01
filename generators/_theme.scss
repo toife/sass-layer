@@ -94,6 +94,8 @@
   $shapes: map.get($theme, "shapes");
   $sizes: map.get($theme, "sizes");
   $modes: map.get($theme, "modes");
+  $roles: map.get($theme, "roles");
+  $palette: color.palette($roles);
 
   :root {
     --prefix: #{config.$prefix};
@@ -101,17 +103,14 @@
     @include tokens($theme);
     @include shapes($shapes);
     @include sizes($sizes);
+    @include mixins.palette($palette);
   }
 
-  @each $mode, $mode-config in $modes {
-    $layers: map.get($mode-config, "layers");
-    $base: map.get($mode-config, "base-color-weight");
-    $roles: map.get($mode-config, "roles");
-    $palette: color.palette($roles, $base);
+  @each $mode, $value in $modes {
+    $layers: map.get($value, "layers");
     $modeCls: naming.prefix("mode", $mode);
 
     .#{$modeCls} {
-      @include mixins.palette($palette);
       @include layers($layers);
     }
   }
