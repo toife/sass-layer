@@ -60,10 +60,10 @@
       $p-color: "";
 
       @if ($color == #ffffff) {
-        $percent: math.div($level, 950) * 100%;
+        $percent: math.div($level, $base) * 100%;
         $p-color: mix($color, rgb(0, 0, 0), $percent);
       } @else if ($color == #000000) {
-        $percent: math.div($level, 950) * 100%;
+        $percent: math.div($level, $base) * 100%;
         $p-color: mix($color, rgb(255, 255, 255), $percent);
       } @else {
         $percent: math.div($base - $level, $base) * 50%;
