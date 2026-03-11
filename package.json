@@ -1,6 +1,6 @@
 {
   "name": "@toife/sass-layer-generator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Sass layer generator - utilities for design tokens, utility classes, and theme generation",
   "type": "module",
   "sideEffects": true,
