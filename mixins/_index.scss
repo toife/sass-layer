@@ -25,7 +25,8 @@
     // Case is color
     @else if (meta.type-of($value) == "list") {
       $property: naming.property($p...);
-      #{$property}: naming.palette-var(list.nth($value, 1), list.nth($value, 2));
+      $color: naming.palette-var(list.nth($value, 1), list.nth($value, 2));
+      #{$property}: #{$color};
     }
     // Case is string
     @else {
