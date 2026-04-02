@@ -63,6 +63,17 @@
   }
 }
 
+// Direction
+@mixin directions($directions) {
+  @each $key, $value in $directions {
+    $cls: naming.prefix("direction", $key);
+
+    .#{$cls} {
+      @include mixins.tokens($value);
+    }
+  }
+}
+
 // Build token
 @mixin tokens($theme) {
   $spacing: map.get($theme, "spacing");
@@ -93,6 +104,7 @@
 @mixin generate($theme) {
   $shapes: map.get($theme, "shapes");
   $sizes: map.get($theme, "sizes");
+  $directions: map.get($theme, "directions");
   $modes: map.get($theme, "modes");
   $roles: map.get($theme, "roles");
   $palette: color.palette($roles);
@@ -103,6 +115,7 @@
     @include tokens($theme);
     @include shapes($shapes);
     @include sizes($sizes);
+    @include directions($directions);
     @include mixins.palette($palette);
   }
 
