@@ -1,15 +1,15 @@
-# @toife/sass-layer-generator
+# @toife/sass-layer
 
 Sass library for design tokens, utility classes, and theme generation. No build step required — use raw Sass files directly in your project.
 
 ## Installation
 
 ```bash
-npm install @toife/sass-layer-generator
+npm install @toife/sass-layer
 # or
-yarn add @toife/sass-layer-generator
+yarn add @toife/sass-layer
 # or
-pnpm add @toife/sass-layer-generator
+pnpm add @toife/sass-layer
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ pnpm add @toife/sass-layer-generator
 ### Basic import
 
 ```scss
-@use "@toife/sass-layer-generator" with (
+@use "@toife/sass-layer" with (
   $prefix: "t",
   $separator: "-"
 );
@@ -26,7 +26,7 @@ pnpm add @toife/sass-layer-generator
 ### Use config, functions, mixins, generators
 
 ```scss
-@use "@toife/sass-layer-generator" as sass-layer;
+@use "@toife/sass-layer" as sass-layer;
 
 // Config (prefix, separator)
 // Functions: fn-naming-*, fn-color-*
@@ -37,7 +37,7 @@ pnpm add @toife/sass-layer-generator
 ### Example: Generate utility classes
 
 ```scss
-@use "@toife/sass-layer-generator" as sass-layer;
+@use "@toife/sass-layer" as sass-layer;
 
 @include sass-layer.classes-generate();
 ```
@@ -45,7 +45,7 @@ pnpm add @toife/sass-layer-generator
 ### Example: Generate theme from tokens
 
 ```scss
-@use "@toife/sass-layer-generator" as sass-layer;
+@use "@toife/sass-layer" as sass-layer;
 
 $theme: (
   "spacing": (...),

@@ -1,7 +1,7 @@
 {
-  "name": "@toife/sass-layer-generator",
-  "version": "1.1.0",
-  "description": "Sass layer generator - utilities for design tokens, utility classes, and theme generation",
+  "name": "@toife/sass-layer",
+  "version": "1.0.0",
+  "description": "Sass layer - utilities for design tokens, utility classes, and theme generation",
   "type": "module",
   "sideEffects": true,
   "exports": {
@@ -31,7 +31,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/toife/sass-layer-generator"
+    "url": "https://github.com/toife/sass-layer"
   },
   "peerDependencies": {
     "sass": ">=1.50.0"
