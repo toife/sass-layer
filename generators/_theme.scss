@@ -80,7 +80,6 @@
   $motion: config.$motion;
   $viewport: config.$viewport;
   $overlay: config.$overlay;
-  $sizes: config.$sizes;
   $breakpoints: config.$breakpoints;
 
   @include mixins.tokens(
@@ -96,7 +95,7 @@
       "motion": $motion,
       "viewport": $viewport,
       "overlay": $overlay,
-      "breakpoints": $breakpoints,
+      "breakpoint": $breakpoints,
     )
   );
 }

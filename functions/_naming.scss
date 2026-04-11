@@ -34,3 +34,13 @@
 @function palette-var($color, $weight) {
   @return var("palette", $color, $weight);
 }
+
+@function cascade-dvar($suffix, $keys, $bp-index, $base) {
+  $result: $base;
+  @for $j from 1 through $bp-index {
+    $key: list.nth($keys, $j);
+    $p: list.append($suffix, $key);
+    $result: dvar($p, $result);
+  }
+  @return $result;
+}
