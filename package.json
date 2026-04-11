@@ -1,6 +1,6 @@
 {
   "name": "@toife/sass-layer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sass layer - utilities for design tokens, utility classes, and theme generation",
   "type": "module",
   "sideEffects": true,

@@ -1,6 +1,5 @@
 @use "sass:map";
 @use "sass:list";
-@use "sass:meta";
 @use "../mixins";
 @use "../functions/naming";
 @use "../functions/color";
@@ -42,8 +41,8 @@
 }
 
 // Shape
-@mixin shapes($shapes) {
-  @each $key, $value in $shapes {
+@mixin shapes() {
+  @each $key, $value in config.$shapes {
     $cls: naming.prefix("shape", $key);
 
     .#{$cls} {
@@ -53,8 +52,8 @@
 }
 
 // Size
-@mixin sizes($sizes) {
-  @each $key, $value in $sizes {
+@mixin sizes() {
+  @each $key, $value in config.$sizes {
     $cls: naming.prefix("size", $key);
 
     .#{$cls} {
@@ -64,8 +63,8 @@
 }
 
 // Direction
-@mixin directions($directions) {
-  @each $key, $value in $directions {
+@mixin directions() {
+  @each $key, $value in config.$directions {
     $cls: naming.prefix("direction", $key);
 
     .#{$cls} {
@@ -75,13 +74,14 @@
 }
 
 // Build token
-@mixin tokens($theme) {
-  $spacing: map.get($theme, "spacing");
-  $stroke: map.get($theme, "stroke");
-  $motion: map.get($theme, "motion");
-  $viewport: map.get($theme, "viewport");
-  $overlay: map.get($theme, "overlay");
-  $sizes: map.get($theme, "sizes");
+@mixin tokens() {
+  $spacing: config.$spacing;
+  $stroke: config.$stroke;
+  $motion: config.$motion;
+  $viewport: config.$viewport;
+  $overlay: config.$overlay;
+  $sizes: config.$sizes;
+  $breakpoints: config.$breakpoints;
 
   @include mixins.tokens(
     (
@@ -96,35 +96,31 @@
       "motion": $motion,
       "viewport": $viewport,
       "overlay": $overlay,
+      "breakpoints": $breakpoints,
     )
   );
 }
 
-// Build theme
-@mixin generate($theme) {
-  $shapes: map.get($theme, "shapes");
-  $sizes: map.get($theme, "sizes");
-  $directions: map.get($theme, "directions");
-  $modes: map.get($theme, "modes");
-  $roles: map.get($theme, "roles");
-  $palette: color.palette($roles);
+// Build
+@mixin generate() {
+  $modes: config.$modes;
+  $palette: color.palette(config.$roles);
 
   :root {
     --prefix: #{config.$prefix};
     --separator: #{config.$separator};
-    @include tokens($theme);
-    @include shapes($shapes);
-    @include sizes($sizes);
-    @include directions($directions);
+    @include tokens();
+    @include shapes();
+    @include sizes();
+    @include directions();
     @include mixins.palette($palette);
   }
 
   @each $mode, $value in $modes {
-    $layers: map.get($value, "layers");
     $modeCls: naming.prefix("mode", $mode);
 
     .#{$modeCls} {
-      @include layers($layers);
+      @include layers($value);
     }
   }
 }
