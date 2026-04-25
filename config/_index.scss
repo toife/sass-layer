@@ -45,18 +45,18 @@ $overlay: (
   "max-height": $overlay-max-height,
 ) !default;
 
-$shape-flat-border-radius: 0em !default;
-$shape-rounded-border-radius: 0.5em !default;
-$shape-pill-border-radius: 2em !default;
+$shape-flat-radius-ratio: 0em !default;
+$shape-rounded-radius-ratio: 0.5em !default;
+$shape-pill-radius-ratio: 2em !default;
 $shapes: (
   "flat": (
-    "border-radius": $shape-flat-border-radius,
+    "radius-ratio": $shape-flat-radius-ratio,
   ),
   "rounded": (
-    "border-radius": $shape-rounded-border-radius,
+    "radius-ratio": $shape-rounded-radius-ratio,
   ),
   "pill": (
-    "border-radius": $shape-pill-border-radius,
+    "radius-ratio": $shape-pill-radius-ratio,
   ),
 ) !default;
 
