@@ -1,0 +1,14 @@
+@use "../../mixins";
+@use "../../functions/naming";
+@use "../../config";
+
+// Shape
+@mixin shapes() {
+  @each $key, $value in config.$shapes {
+    $cls: naming.prefix("shape", $key);
+
+    .#{$cls} {
+      @include mixins.nested($value);
+    }
+  }
+}

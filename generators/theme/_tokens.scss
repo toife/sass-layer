@@ -1,0 +1,29 @@
+@use "../../mixins";
+@use "../../config";
+
+// Build token
+@mixin tokens() {
+  $spacing: config.$spacing;
+  $stroke: config.$stroke;
+  $motion: config.$motion;
+  $viewport: config.$viewport;
+  $overlay: config.$overlay;
+  $breakpoints: config.$breakpoints;
+
+  @include mixins.nested(
+    (
+      "safe-area": (
+        "top": "env(safe-area-inset-top)",
+        "right": "env(safe-area-inset-right)",
+        "bottom": "env(safe-area-inset-bottom)",
+        "left": "env(safe-area-inset-left)",
+      ),
+      "spacing": $spacing,
+      "stroke": $stroke,
+      "motion": $motion,
+      "viewport": $viewport,
+      "overlay": $overlay,
+      "breakpoint": $breakpoints,
+    )
+  );
+}

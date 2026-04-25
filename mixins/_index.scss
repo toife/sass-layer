@@ -14,13 +14,13 @@
 }
 
 // Include tokens
-@mixin tokens($ls, $prefix: ()) {
+@mixin nested($ls, $prefix: ()) {
   @each $name, $value in $ls {
     $p: list.append($prefix, $name);
 
     // Case is map
     @if (meta.type-of($value) == "map") {
-      @include tokens($value, $p);
+      @include nested($value, $p);
     }
     // Case is color
     @else if (meta.type-of($value) == "list") {

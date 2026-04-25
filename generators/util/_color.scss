@@ -1,0 +1,20 @@
+@use "sass:list";
+@use "../../functions/naming";
+@use "../../config";
+
+@mixin color() {
+  @each $name, $value in config.$roles {
+    $color: naming.palette-var($name, list.nth($value, 2));
+    .color-#{$name} {
+      color: rgb(#{$color});
+    }
+
+    .background-#{$name} {
+      background-color: rgb(#{$color});
+    }
+
+    .border-#{$name} {
+      border-color: rgb(#{$color});
+    }
+  }
+}
