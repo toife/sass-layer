@@ -45,9 +45,9 @@ $overlay: (
   "max-height": $overlay-max-height,
 ) !default;
 
-$shape-flat-radius-ratio: 0em !default;
-$shape-rounded-radius-ratio: 0.5em !default;
-$shape-pill-radius-ratio: 2em !default;
+$shape-flat-radius-ratio: 0 !default;
+$shape-rounded-radius-ratio: 0.1 !default;
+$shape-pill-radius-ratio: 0.5 !default;
 $shapes: (
   "flat": (
     "radius-ratio": $shape-flat-radius-ratio,
