@@ -6,15 +6,15 @@
   @each $name, $value in config.$roles {
     $color: naming.palette-var($name, list.nth($value, 2));
     .color-#{$name} {
-      color: rgb(#{$color});
+      color: rgb(#{$color}) !important;
     }
 
     .background-#{$name} {
-      background-color: rgb(#{$color});
+      background-color: rgb(#{$color}) !important;
     }
 
     .border-#{$name} {
-      border-color: rgb(#{$color});
+      border-color: rgb(#{$color}) !important;
     }
   }
 }
