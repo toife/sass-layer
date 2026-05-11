@@ -5,7 +5,7 @@
 @mixin tokens() {
   $spacing: config.$spacing;
   $stroke: config.$stroke;
-  $motion: config.$motion;
+  $default: config.$default;
   $viewport: config.$viewport;
   $overlay: config.$overlay;
   $breakpoints: config.$breakpoints;
@@ -20,10 +20,11 @@
       ),
       "spacing": $spacing,
       "stroke": $stroke,
-      "motion": $motion,
       "viewport": $viewport,
       "overlay": $overlay,
       "breakpoint": $breakpoints,
     )
   );
+
+  @include mixins.nested($default);
 }

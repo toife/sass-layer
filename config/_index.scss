@@ -1,6 +1,14 @@
 $prefix: "t" !default;
 $separator: "-" !default;
 
+// Default tokens
+$default-duration: 0.25s !default;
+$default-radius-size: 3rem !default;
+$default: (
+  "duration": $default-duration,
+  "radius-size": $default-radius-size,
+) !default;
+
 // Shared config (same for dark & light)
 $spacing-x: 0.25rem !default;
 $spacing-y: 0.25rem !default;
@@ -9,16 +17,13 @@ $spacing: (
   "y": $spacing-y,
 ) !default;
 
+// Stroke
 $stroke-width: 0.55px !default;
 $stroke: (
   "width": $stroke-width,
 ) !default;
 
-$duration: 0.25s !default;
-$motion: (
-  "duration": $duration,
-) !default;
-
+// Viewport
 $viewport-width: 100vw !default;
 $viewport-height: 100vh !default;
 $viewport-max-width: 100vw !default;
@@ -30,6 +35,7 @@ $viewport: (
   "max-height": $viewport-max-height,
 ) !default;
 
+// Breakpoints
 $breakpoints: (
   "sm": 576px,
   "md": 768px,
@@ -38,6 +44,7 @@ $breakpoints: (
   "2xl": 1536px,
 ) !default;
 
+// Overlay
 $overlay-max-width: 300px !default;
 $overlay-max-height: 300px !default;
 $overlay: (
@@ -45,6 +52,7 @@ $overlay: (
   "max-height": $overlay-max-height,
 ) !default;
 
+// Shapes
 $shape-flat-radius-ratio: 0 !default;
 $shape-rounded-radius-ratio: 0.2 !default;
 $shape-pill-radius-ratio: 0.5 !default;
@@ -60,6 +68,7 @@ $shapes: (
   ),
 ) !default;
 
+// Sizes
 $size-small-control-block-size: 2rem !default;
 $size-small-control-mark-size: 0.75rem !default;
 $size-small-font-size: 0.8em !default;
@@ -114,6 +123,7 @@ $sizes: (
   ),
 ) !default;
 
+// Directions
 $directions: (
   "left": (
     "text-align": left,
@@ -125,6 +135,7 @@ $directions: (
   ),
 ) !default;
 
+// Roles
 $roles: (
   "light": (
     #ffffff,
