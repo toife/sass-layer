@@ -38,3 +38,14 @@
     }
   }
 }
+
+// Include class
+@mixin cls($name, $tokens, $selector: "") {
+  @each $key, $value in $tokens {
+    $cls: naming.prefix($name, $key);
+
+    #{$selector}.#{$cls} {
+      @include nested($value);
+    }
+  }
+}

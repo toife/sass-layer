@@ -1,0 +1,31 @@
+@use "../../mixins";
+@use "../../functions/naming";
+@use "../../config";
+@use "sass:map";
+
+// Components
+@mixin generate() {
+  @each $key, $value in config.$components {
+    $layer: "." + naming.prefix("layer", $key);
+
+    // Property for shapes
+    @if (map.has-key($value, "shapes")) {
+      $shapes: map.get($value, "shapes");
+      @include mixins.cls("shape", $shapes, $layer);
+    }
+
+    // Property for sizes
+    @if (map.has-key($value, "sizes")) {
+      $sizes: map.get($value, "sizes");
+      @include mixins.cls("size", $sizes, $layer);
+    }
+
+    // Property for root
+    @if (map.has-key($value, "root")) {
+      $root: map.get($value, "root");
+      @include mixins.cls("layer", (
+        $key: $root,
+      ));
+    }
+  }
+}

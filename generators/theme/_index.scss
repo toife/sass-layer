@@ -1,33 +1,22 @@
-@use "../../mixins";
-@use "../../functions/naming";
-@use "../../functions/color";
 @use "../../config";
-@use "./layers";
-@use "./shapes";
-@use "./sizes";
-@use "./directions";
-@use "./tokens";
+@use "../../mixins";
+@use "./modes";
+@use "./root";
+@use "./components";
 
 // Build
 @mixin generate() {
-  $modes: config.$modes;
-  $palette: color.palette(config.$roles);
+  // Root
+  @include root.generate();
 
-  :root {
-    --prefix: #{config.$prefix};
-    --separator: #{config.$separator};
-    @include tokens.tokens();
-    @include shapes.shapes();
-    @include sizes.sizes();
-    @include directions.directions();
-    @include mixins.palette($palette);
-  }
+  // Classes
+  @include mixins.cls("direction", config.$directions);
+  @include mixins.cls("shape", config.$shapes);
+  @include mixins.cls("size", config.$sizes);
 
-  @each $mode, $value in $modes {
-    $modeCls: naming.prefix("mode", $mode);
+  // Components
+  @include components.generate();
 
-    .#{$modeCls} {
-      @include layers.layers($value);
-    }
-  }
+  // Modes
+  @include modes.generate();
 }

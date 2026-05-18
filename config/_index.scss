@@ -1,139 +1,7 @@
-$prefix: "t" !default;
+$prefix: "tf" !default;
 $separator: "-" !default;
-
-// Default tokens
-$default-duration: 0.25s !default;
-$default-radius-size: 3rem !default;
-$default: (
-  "duration": $default-duration,
-  "radius-size": $default-radius-size,
-) !default;
-
-// Shared config (same for dark & light)
-$spacing-x: 0.25rem !default;
-$spacing-y: 0.25rem !default;
-$spacing: (
-  "x": $spacing-x,
-  "y": $spacing-y,
-) !default;
-
-// Stroke
-$stroke-width: 0.55px !default;
-$stroke: (
-  "width": $stroke-width,
-) !default;
-
-// Viewport
-$viewport-width: 100vw !default;
-$viewport-height: 100vh !default;
-$viewport-max-width: 100vw !default;
-$viewport-max-height: 100vh !default;
-$viewport: (
-  "width": $viewport-width,
-  "height": $viewport-height,
-  "max-width": $viewport-max-width,
-  "max-height": $viewport-max-height,
-) !default;
-
-// Breakpoints
-$breakpoints: (
-  "sm": 576px,
-  "md": 768px,
-  "lg": 992px,
-  "xl": 1200px,
-  "2xl": 1536px,
-) !default;
-
-// Overlay
-$overlay-max-width: 300px !default;
-$overlay-max-height: 300px !default;
-$overlay: (
-  "max-width": $overlay-max-width,
-  "max-height": $overlay-max-height,
-) !default;
-
-// Shapes
-$shape-flat-radius-ratio: 0 !default;
-$shape-rounded-radius-ratio: 0.2 !default;
-$shape-pill-radius-ratio: 0.5 !default;
-$shapes: (
-  "flat": (
-    "radius-ratio": $shape-flat-radius-ratio,
-  ),
-  "rounded": (
-    "radius-ratio": $shape-rounded-radius-ratio,
-  ),
-  "pill": (
-    "radius-ratio": $shape-pill-radius-ratio,
-  ),
-) !default;
-
-// Sizes
-$size-small-control-block-size: 2rem !default;
-$size-small-control-mark-size: 0.75rem !default;
-$size-small-font-size: 0.8em !default;
-$size-small-line-height: 1.5 !default;
-$size-small-coefficient-x: 2 !default;
-$size-small-coefficient-y: 1 !default;
-$size-small-radius-size: 2rem !default;
-
-$size-standard-control-block-size: 2.9rem !default;
-$size-standard-control-mark-size: 1rem !default;
-$size-standard-font-size: 1em !default;
-$size-standard-line-height: 1.5 !default;
-$size-standard-coefficient-x: 3 !default;
-$size-standard-coefficient-y: 2 !default;
-$size-standard-radius-size: 2.9rem !default;
-
-$size-large-control-block-size: 3.6rem !default;
-$size-large-control-mark-size: 1.1rem !default;
-$size-large-font-size: 1.2em !default;
-$size-large-line-height: 1.5 !default;
-$size-large-coefficient-x: 4 !default;
-$size-large-coefficient-y: 3 !default;
-$size-large-radius-size: 3.6rem !default;
-
-$sizes: (
-  "small": (
-    "control-block-size": $size-small-control-block-size,
-    "control-mark-size": $size-small-control-mark-size,
-    "font-size": $size-small-font-size,
-    "line-height": $size-small-line-height,
-    "coefficient-x": $size-small-coefficient-x,
-    "coefficient-y": $size-small-coefficient-y,
-    "radius-size": $size-small-radius-size,
-  ),
-  "standard": (
-    "control-block-size": $size-standard-control-block-size,
-    "control-mark-size": $size-standard-control-mark-size,
-    "font-size": $size-standard-font-size,
-    "line-height": $size-standard-line-height,
-    "coefficient-x": $size-standard-coefficient-x,
-    "coefficient-y": $size-standard-coefficient-y,
-    "radius-size": $size-standard-radius-size,
-  ),
-  "large": (
-    "control-block-size": $size-large-control-block-size,
-    "control-mark-size": $size-large-control-mark-size,
-    "font-size": $size-large-font-size,
-    "line-height": $size-large-line-height,
-    "coefficient-x": $size-large-coefficient-x,
-    "coefficient-y": $size-large-coefficient-y,
-    "radius-size": $size-large-radius-size,
-  ),
-) !default;
-
-// Directions
-$directions: (
-  "left": (
-    "text-align": left,
-    "justify-content": start,
-  ),
-  "right": (
-    "text-align": right,
-    "justify-content": end,
-  ),
-) !default;
+$modes: () !default;
+$components: () !default;
 
 // Roles
 $roles: (
@@ -167,4 +35,61 @@ $roles: (
   ),
 ) !default;
 
-$modes: () !default;
+// ------------------------------------------------------------
+// ROOT PROPERTIES
+// ------------------------------------------------------------
+// Breakpoints
+$breakpoints: (
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "2xl": 1536px,
+) !default;
+
+// Border
+$border-width: 0.55px !default;
+$border: (
+  "width": $border-width,
+) !default;
+
+// Transition
+$transition-duration: 0.25s !default;
+$transition: (
+  "duration": $transition-duration,
+) !default;
+
+// Spacing
+$spacing-x: 0.25rem !default;
+$spacing-y: 0.25rem !default;
+$spacing: (
+  "x": $spacing-x,
+  "y": $spacing-y,
+) !default;
+
+// Viewport
+$viewport-width: 100vw !default;
+$viewport-height: 100vh !default;
+$viewport-max-width: 100vw !default;
+$viewport-max-height: 100vh !default;
+$viewport: (
+  "width": $viewport-width,
+  "height": $viewport-height,
+  "max-width": $viewport-max-width,
+  "max-height": $viewport-max-height,
+) !default;
+
+// Overlay
+$overlay-max-width: 300px !default;
+$overlay-max-height: 300px !default;
+$overlay: (
+  "max-width": $overlay-max-width,
+  "max-height": $overlay-max-height,
+) !default;
+
+// ------------------------------------------------------------
+// CUSTOM PROPERTIES WITH CLASSESE
+// ------------------------------------------------------------
+@forward "shape";
+@forward "size";
+@forward "direction";

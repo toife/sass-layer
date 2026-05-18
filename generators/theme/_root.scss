@@ -1,14 +1,15 @@
 @use "../../mixins";
 @use "../../config";
+@use "../../functions/color";
 
 // Build token
 @mixin tokens() {
+  $border: config.$border;
   $spacing: config.$spacing;
-  $stroke: config.$stroke;
-  $default: config.$default;
   $viewport: config.$viewport;
   $overlay: config.$overlay;
   $breakpoints: config.$breakpoints;
+  $transition: config.$transition;
 
   @include mixins.nested(
     (
@@ -19,12 +20,22 @@
         "left": "env(safe-area-inset-left)",
       ),
       "spacing": $spacing,
-      "stroke": $stroke,
       "viewport": $viewport,
       "overlay": $overlay,
       "breakpoint": $breakpoints,
+      "transition": $transition,
+      "border": $border,
     )
   );
+}
 
-  @include mixins.nested($default);
+@mixin generate() {
+  $palette: color.palette(config.$roles);
+
+  :root {
+    --prefix: #{config.$prefix};
+    --separator: #{config.$separator};
+    @include tokens();
+    @include mixins.palette($palette);
+  }
 }
