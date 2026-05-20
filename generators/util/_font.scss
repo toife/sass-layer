@@ -32,7 +32,11 @@ $font-weight-values: (
     $value: math.div($size, 10);
 
     .font-size-#{$suffix} {
-      font-size: #{$value}em;
+      font-size: #{$value}em !important;
+    }
+
+    .line-height-#{$suffix} {
+      line-height: #{$value}em !important;
     }
   }
 }
