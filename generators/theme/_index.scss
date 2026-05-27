@@ -2,7 +2,6 @@
 @use "../../mixins";
 @use "./modes";
 @use "./root";
-@use "./components";
 
 // Build
 @mixin generate() {
@@ -13,9 +12,6 @@
   @include mixins.cls("direction", config.$directions);
   @include mixins.cls("shape", config.$shapes);
   @include mixins.cls("size", config.$sizes);
-
-  // Components
-  @include components.generate();
 
   // Modes
   @include modes.generate();
