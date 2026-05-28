@@ -9,32 +9,34 @@
     $modeCls: naming.prefix("mode", $key);
   
     .#{$modeCls} {
-      $layer: "." + naming.prefix("layer", $key);
+      @each $layerKey, $layerValue in $value {
+        $layer: "." + naming.prefix("layer", $layerKey);
 
-      // Property for shapes
-      @if (map.has-key($value, "shapes")) {
-        $shapes: map.get($value, "shapes");
-        @include mixins.cls("shape", $shapes, $layer);
-      }
+        // Property for shapes
+        @if (map.has-key($layerValue, "shapes")) {
+          $shapes: map.get($layerValue, "shapes");
+          @include mixins.cls("shape", $shapes, $layer);
+        }
 
-      // Property for sizes
-      @if (map.has-key($value, "sizes")) {
-        $sizes: map.get($value, "sizes");
-        @include mixins.cls("size", $sizes, $layer);
-      }
+        // Property for sizes
+        @if (map.has-key($layerValue, "sizes")) {
+          $sizes: map.get($layerValue, "sizes");
+          @include mixins.cls("size", $sizes, $layer);
+        }
 
-      // Property for root
-      @if (map.has-key($value, "root")) {
-        $root: map.get($value, "root");
-        @include mixins.cls("layer", (
-          $key: $root,
-        ));
-      }
+        // Property for root
+        @if (map.has-key($layerValue, "root")) {
+          $root: map.get($layerValue, "root");
+          @include mixins.cls("layer", (
+            $key: $root,
+          ));
+        }
 
-      // Property for roles
-      @if (map.has-key($value, "roles")) {
-        $roles: map.get($value, "roles");
-        @include mixins.cls("role", $roles, $layer);
+        // Property for roles
+        @if (map.has-key($layerValue, "roles")) {
+          $roles: map.get($layerValue, "roles");
+          @include mixins.cls("role", $roles, $layer);
+        }
       }
     }
   }

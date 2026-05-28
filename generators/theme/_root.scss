@@ -11,6 +11,11 @@
   $breakpoints: config.$breakpoints;
   $transition: config.$transition;
 
+  // Classes
+  @include mixins.cls("direction", config.$directions);
+  @include mixins.cls("shape", config.$shapes);
+  @include mixins.cls("size", config.$sizes);
+
   @include mixins.nested(
     (
       "safe-area": (

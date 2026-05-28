@@ -42,13 +42,15 @@
 // Include class
 @mixin cls($name, $tokens, $selector: "") {
   @each $key, $value in $tokens {
+    $item-selector: $selector;
+
     @if ($key != "") {
       $cls: naming.prefix($name, $key);
-      $selector: $selector + "." + $cls;
+      $item-selector: $item-selector + "." + $cls;
     }
 
-    @if ($selector != "") {
-      #{$selector} {
+    @if ($item-selector != "") {
+      #{$item-selector} {
         @include nested($value);
       }
     }

@@ -8,11 +8,6 @@
   // Root
   @include root.generate();
 
-  // Classes
-  @include mixins.cls("direction", config.$directions);
-  @include mixins.cls("shape", config.$shapes);
-  @include mixins.cls("size", config.$sizes);
-
   // Modes
   @include modes.generate();
 }
