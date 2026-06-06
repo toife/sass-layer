@@ -1,5 +1,4 @@
 @forward "config";
 @forward "functions" as fn-*;
 @forward "mixins" as mx-*;
-@forward "generators/util" as util-*;
-@forward "generators/theme" as theme-*;
+@forward "builder";

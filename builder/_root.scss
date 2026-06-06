@@ -1,6 +1,6 @@
-@use "../../mixins";
-@use "../../config";
-@use "../../functions/color";
+@use "../mixins";
+@use "../config";
+@use "../functions/color";
 
 // Build token
 @mixin tokens() {
@@ -34,7 +34,7 @@
   );
 }
 
-@mixin generate() {
+@mixin build() {
   $palette: color.palette(config.$roles);
 
   :root {
