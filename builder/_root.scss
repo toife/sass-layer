@@ -1,37 +1,26 @@
 @use "../mixins";
 @use "../config";
 @use "../functions/color";
+@use "sass:map";
 
 // Build token
 @mixin tokens() {
-  $border: config.$border;
-  $spacing: config.$spacing;
-  $viewport: config.$viewport;
-  $overlay: config.$overlay;
-  $breakpoints: config.$breakpoints;
-  $transition: config.$transition;
-
   // Classes
   @include mixins.cls("direction", config.$directions);
   @include mixins.cls("shape", config.$shapes);
   @include mixins.cls("size", config.$sizes);
 
-  @include mixins.nested(
-    (
-      "safe-area": (
-        "top": "env(safe-area-inset-top)",
-        "right": "env(safe-area-inset-right)",
-        "bottom": "env(safe-area-inset-bottom)",
-        "left": "env(safe-area-inset-left)",
-      ),
-      "spacing": $spacing,
-      "viewport": $viewport,
-      "overlay": $overlay,
-      "breakpoint": $breakpoints,
-      "transition": $transition,
-      "border": $border,
-    )
-  );
+  // Extensions classes
+  $classes: map.get(config.$extensions, "classes");
+  @each $key, $value in $classes {
+    @include mixins.cls($key, $value);
+  }
+
+  // Base variables
+  @include mixins.nested(config.$base);
+
+  // Extensions variables
+  @include mixins.nested(map.get(config.$extensions, "variables"));
 }
 
 @mixin build() {
