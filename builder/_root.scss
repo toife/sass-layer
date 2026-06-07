@@ -35,7 +35,7 @@
 }
 
 @mixin build() {
-  $palette: color.palette(config.$roles);
+  $palette: color.palette(config.$colors);
 
   :root {
     --prefix: #{config.$prefix};

@@ -47,16 +47,16 @@
 }
 
 // Generate palette
-@function palette($roles, $loop: 18, $step: 50) {
+@function palette($colors, $loop: 18, $step: 50) {
   $palette: ();
 
-  @each $role-key, $role-value in $roles {
-    $color: list.nth($role-value, 1);
-    $base: list.nth($role-value, 2);
+  @each $color-key, $color-value in $colors {
+    $color: list.nth($color-value, 1);
+    $base: list.nth($color-value, 2);
 
     @for $i from 0 through $loop {
       $level: 950 - $i * $step;
-      $p-name: naming.join($role-key, $level);
+      $p-name: naming.join($color-key, $level);
       $p-color: "";
 
       @if ($color == #ffffff) {
