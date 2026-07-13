@@ -1,5 +1,6 @@
 @use "../mixins";
 @use "../functions/naming";
+@use "../functions/color";
 @use "../config";
 @use "sass:map";
 
@@ -9,7 +10,13 @@
     $modeCls: naming.prefix("mode", $key);
   
     .#{$modeCls} {
-      @each $layerKey, $layerValue in $value {
+      $colors: map.get($value, "colors");
+      $layers: map.get($value, "layers");
+
+      $palette: color.palette($colors);
+      @include mixins.palette($palette);
+
+      @each $layerKey, $layerValue in $layers {
         $layer: "." + naming.prefix("layer", $layerKey);
 
         // Property for shapes

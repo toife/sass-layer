@@ -1,6 +1,5 @@
 @use "../mixins";
 @use "../config";
-@use "../functions/color";
 @use "sass:map";
 
 // Build token
@@ -10,26 +9,23 @@
   @include mixins.cls("shape", config.$shapes);
   @include mixins.cls("size", config.$sizes);
 
+  // Base variables
+  @include mixins.nested(config.$base);
+
   // Extensions classes
   $classes: map.get(config.$extensions, "classes");
   @each $key, $value in $classes {
     @include mixins.cls($key, $value);
   }
 
-  // Base variables
-  @include mixins.nested(config.$base);
-
   // Extensions variables
   @include mixins.nested(map.get(config.$extensions, "variables"));
 }
 
 @mixin build() {
-  $palette: color.palette(config.$colors);
-
   :root {
     --prefix: #{config.$prefix};
     --separator: #{config.$separator};
     @include tokens();
-    @include mixins.palette($palette);
   }
 }
