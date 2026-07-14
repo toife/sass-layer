@@ -31,7 +31,7 @@
   @return "var(" + property($parts...) + ", " + $default + ")";
 }
 
-@function palette-var($color, $weight) {
+@function palette-var($color, $weight: "") {
   @return var("palette", $color, $weight);
 }
 
