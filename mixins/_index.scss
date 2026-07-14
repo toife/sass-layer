@@ -6,10 +6,10 @@
 @use "sass:meta";
 
 // Include palette
-@mixin palette($colors, $loop: 17, $step: 50) {
+@mixin palette($colors) {
   @each $n, $c in $colors {
-    $n: naming.property("palette", $n);
-    #{$n}: #{$c};
+    $var-name: naming.property("palette", $n);
+    #{$var-name}: #{$c};
   }
 }
 
