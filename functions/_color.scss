@@ -54,10 +54,6 @@
     $color: list.nth($color-value, 1);
     $base: list.nth($color-value, 2);
 
-    // Default color is the original color
-    $p-color: scale($color, 0);
-    $palette: map.set($palette, $color-key, $p-color);
-
     // Generate palette colors
     @for $i from 0 through $loop {
       $level: 950 - $i * $step;
@@ -76,6 +72,11 @@
       }
 
       $palette: map.set($palette, $p-name, $p-color);
+
+      // Default color is the original color
+      @if ($level == $base) {
+        $palette: map.set($palette, $color-key, $p-color);
+      }
     }
   }
 
