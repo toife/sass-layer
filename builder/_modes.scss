@@ -35,7 +35,7 @@
         @if (map.has-key($layerValue, "root")) {
           $root: map.get($layerValue, "root");
           @include mixins.cls("layer", (
-            $key: $root,
+            $layerKey: $root,
           ));
         }
 
