@@ -31,11 +31,11 @@
           @include mixins.cls("size", $sizes, $layer);
         }
 
-        // Property for root
-        @if (map.has-key($layerValue, "root")) {
-          $root: map.get($layerValue, "root");
+        // Property for host
+        @if (map.has-key($layerValue, "host")) {
+          $host: map.get($layerValue, "host");
           @include mixins.cls("layer", (
-            $layerKey: $root,
+            $layerKey: $host,
           ));
         }
 
